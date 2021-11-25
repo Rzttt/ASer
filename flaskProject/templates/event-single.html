@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<!--[if IE 7]>					<html class="ie7 no-js" lang="en">     <![endif]-->
+<!--[if lte IE 8]>              <html class="ie8 no-js" lang="en">     <![endif]-->
+<!--[if IE 9]>					<html class="ie9 no-js" lang="en">     <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="not-ie no-js" lang="en">  <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	
+	<title>Events Single</title>
+	
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="shortcut" href="../static/images/favicon.ico" />
+
+	<link rel="stylesheet" href="../static/css/skeleton.css" media="screen" />
+	<link rel="stylesheet" href="../static/css/style.css" media="screen" />
+	<link rel="stylesheet" href="../static/css/mediaelementplayer.css" media="screen" />
+	<link rel="stylesheet" href="../static/fancybox/jquery.fancybox.css" media="screen" />
+	
+	<!-- REVOLUTION BANNER CSS SETTINGS -->
+	<link rel="stylesheet" href="../static/rs-plugin/css/settings.css" media="screen" />
+	
+	<!-- HTML5 SHIV + DETECT TOUCH EVENTS -->
+	<script type="text/javascript" src="../static/js/modernizr.custom.js"></script>
+</head>
+<body class="color-1 h-style-1 text-1">
+	
+	<!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->	
+	
+    {% include 'header.html' %}
+	
+	<!-- - - - - - - - - - - - - - end Header - - - - - - - - - - - - - - - - -->	
+	
+	<!-- - - - - - - - - - - - - - Page Header - - - - - - - - - - - - - - - -->		
+	
+	<section class="page-header">
+		
+		<div class="container">
+			
+			<h1>{{ activity['event'] }}</h1>
+			
+		</div><!--/ .container-->
+		
+	</section><!--/ .page-header-->
+	
+	<!-- - - - - - - - - - - - - end Page Header - - - - - - - - - - - - - - -->	
+
+	<!-- - - - - - - - - - - - - - Main - - - - - - - - - - - - - - - - -->		
+		
+	<section class="main container sbr clearfix">	
+		
+		<!-- - - - - - - - - - Breadcrumbs - - - - - - - - - - - - -->		
+		
+		<div class="breadcrumbs">
+
+			<a title="Home" href="{{ url_for('home') }}">主页</a>
+			<span>{{ activity['event'] }}</span>
+
+		</div><!--/ .breadcrumbs-->	
+		
+		<!-- - - - - - - - - end Breadcrumbs - - - - - - - - - - - -->	
+		
+		<!-- - - - - - - - - - - - - - Content - - - - - - - - - - - - - - - - -->
+		 
+		<section id="content" class="ten columns">
+			
+			<article class="entry event">
+				
+				<div class="bordered">
+					<figure class="add-border">
+						<img src="{{ activity['img_path'] }}" alt="" />
+					</figure>
+				</div><!--/ .bordered-->
+				
+				<div class="entry-meta">
+					
+					<span class="date">27</span>
+					<span class="month">sep</span>
+
+				</div><!--/ .entry-meta-->
+
+				<div class="entry-body">
+					
+					<div class="entry-title">
+
+						<h2 class="title">{{ activity['event'] }}</h2>
+						
+						<span class="e-date"><b>{{ activity['date'] }}</b>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+							<strong>{{ activity['time'] }}</strong>
+						</span> 
+						<span class="place"><b>Place: </b>{{ activity['location'] }}</span>
+						
+					</div><!--/ .entry-title-->		
+					
+				</div><!--/ .entry-body -->
+				
+
+
+				<div class="nine columns offset-by-one alpha omega">
+
+					<p>
+						{{ activity['content'] }}
+                    </p>
+
+
+				</div><!--/ .nine-columns-->
+
+			</article><!--/ .entry-->
+			<section id="comments">
+
+
+
+				<ol class="comments-list">
+                    {%  for i in comments %}
+					<li class="comment">
+
+						<article>
+
+							<div class="bordered alignleft">
+								<figure class="add-border">
+									<a class="single-image" href="#"><img src="{{ i['avatar'] }}" alt="" /></a>
+								</figure>
+							</div><!--/ .bordered-->
+
+							<div class="comment-body">
+
+								<div class="comment-meta">
+
+									<div class="author">{{ i['name'] }}</div>
+									<div class="date">September 27, 2012 at 21:55</div>
+
+								</div><!--/ .comment-meta -->
+
+								<p>
+									{{ i['message'] }}
+								</p>
+
+{#								<a class="comment-reply-link button default align-btn-right" href="#">Reply</a>#}
+
+							</div><!--/ .comment-body -->
+
+						</article>
+
+
+
+
+                {% endfor %}
+				</ol>
+
+			</section><!--/ #comments-->
+			<div class="border-divider"></div>
+
+
+			<section id="respond">
+
+				<h4>Leave a Reply</h4>
+
+				<form method="post" action="" class="comments-form">
+                    {{ form.csrf_token }}
+					<p class="input-block">
+						<label for="name">Name:</label>
+                        {{ form.name(size=20) }}
+{#						<input type="text" name="name" id="name" />#}
+					</p>
+
+					<p class="input-block">
+						<label for="email">E-mail:</label>
+                        {{ form.email(type='email') }}
+{#						<input type="text" name="email" id="email" />#}
+					</p>
+
+					<p class="input-block">
+						<label for="message">Message:</label>
+                         {{ form.message }}
+{#						<textarea name="message" id="message" cols="30" rows="10"></textarea>	#}
+					</p>
+
+					<p class="input-block">
+						<button class="button default" type="submit" id="submit">Submit</button>
+					</p>
+
+				</form><!--/ .comments-form-->	
+
+			</section><!--/ #respond-->	
+			
+		</section><!--/ #content-->
+		
+		<!-- - - - - - - - - - - - - end Content - - - - - - - - - - - - - - - -->
+		
+		<!-- - - - - - - - - - - - - Sidebar - - - - - - - - - - - - - - - - - -->	
+		
+		<aside id="sidebar" class="one-third column">
+			
+			<div class="widget widget_search">
+
+				<form action="/" method="post" id="searchform">
+
+					<fieldset>
+
+						<input type="text" />
+
+						<button type="submit" title="Search">Search</button>
+
+					</fieldset>
+
+				</form><!--/ #searchform-->
+
+			</div><!--/ .widget-->
+
+			<div class="widget widget_popular_posts">
+
+				<h3 class="widget-title">相关网站</h3>
+
+				<ul>
+					<li>
+						<div class="bordered alignleft">
+							<figure class="add-border">
+								<a class="single-image" href="https://www.bilibili.com/"><img src="../static/images/temp/bilibili.png" alt="" /></a>
+							</figure>
+						</div><!--/ .bordered-->
+						<h6><a href="https://www.bilibili.com/">哔哩哔哩</a></h6>
+						<div class="entry-meta"><a href="https://www.bilibili.com/">bilibili，全称为哔哩哔哩弹幕网，是总部位于中国大陆上海的一个以ACG相关内容起家的弹幕视频分享网站</a></div>
+					</li>
+					<li>
+						<div class="bordered alignleft">
+							<figure class="add-border">
+								<a class="single-image" href="https://fgo.wiki/"><img src="../static/images/temp/mooncell.png" alt="" /></a>
+							</figure>
+						</div><!--/ .bordered-->
+						<h6><a href="https://fgo.wiki/">Mooncell</a></h6>
+						<div class="entry-meta"><a href="https://fgo.wiki/">Mooncell是一个玩家自由构筑的Fate/Grand Order中文Wiki。
+</a></div>
+					</li>
+					<li>
+						<div class="bordered alignleft">
+							<figure class="add-border">
+								<a class="single-image" href="https://wiki.biligame.com/ys/%E9%A6%96%E9%A1%B5"><img src="../static/images/temp/genshin.png" alt="" /></a>
+							</figure>
+						</div><!--/ .bordered-->
+						<h6><a href="https://wiki.biligame.com/ys/%E9%A6%96%E9%A1%B5">原神wiki</a></h6>
+						<div class="entry-meta"><a href="https://wiki.biligame.com/ys/%E9%A6%96%E9%A1%B5">本WIKI由旅行者酒馆于2020年03月14日申请开通，编辑权限开放，建议收藏。</a></div>
+					</li>
+				</ul>
+
+			</div><!--/ .widget-->
+
+
+		</aside><!--/ #sidebar--> #sidebar-->
+		
+		<!-- - - - - - - - - - - - - end Sidebar - - - - - - - - - - - - - - - -->				
+	
+			
+	</section><!--/ .main -->
+
+	<!-- - - - - - - - - - - - - end Main - - - - - - - - - - - - - - - - -->			
+
+	
+	<!-- - - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->	
+	
+    {% include 'footer.html' %}
+<!-- GET JQUERY FROM THE GOOGLE APIS -->
+<script src="../static/js/jquery.min.js"></script>
+<!--[if lt IE 9]>
+	<script src="../static/js/selectivizr-and-extra-selectors.min.js"></script>
+<![endif]-->
+<script src="../static/js/respond.min.js"></script>
+<script src="../static/js/jquery.easing.1.3.js"></script>
+<script src="../static/js/jquery.cycle.all.min.js"></script>
+<script src="../static/js/api.js"></script>
+<script src="../static/js/jquery.gmap.min.js"></script>
+<script src="../static/js/mediaelement-and-player.min.js"></script>
+<script src="../static/js/twitterFetcher.js"></script>
+<script src="../static/js/jflickrfeed.min.js"></script>
+<script src="../static/fancybox/jquery.fancybox.pack.js"></script>
+<script src="../static/js/custom.js"></script>
+
+</body>
+</html>

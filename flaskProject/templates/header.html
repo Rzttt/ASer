@@ -1,0 +1,96 @@
+
+
+
+<!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+<header id="header">
+
+  <div class="container">
+
+    <!-- - - - - - - - - - - - Logo - - - - - - - - - - - - - -->
+
+    <a href="{{ url_for('home') }}" id="logo">
+      <h1>ASer动漫社</h1>
+    </a><!--/ #logo-->
+
+    <!-- - - - - - - - - - - end Logo - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - Event Holder - - - - - - - - - - - - - -->
+
+    <div class="event-holder clearfix">
+      <b>距离 {{ event['activity']}}</b>
+      <span class="event-numbers" id="day">05</span>
+      <span class="event-text">天</span>
+      <span class="event-numbers"id="hour">07</span>
+      <span class="event-text">时</span>
+      <span class="event-numbers"id="minute">25</span>
+      <span class="event-text">分</span>
+      <span class="event-numbers"id="second">35</span>
+      <span class="event-text">秒</span>
+    </div><!--/ .event-holder-->
+
+    <script src="../static/js/common.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+      <script>
+            var daySpan = my$('day');
+            var hourSpan = my$('hour');
+            var minuteSpan = my$('minute');
+            var secondSpan = my$('second');
+            TimeRow();
+            setInterval(TimeRow, 1000)
+
+            function TimeRow() {
+                var end = new Date('{{ event['time'] }}').getTime();
+                var start = new Date().getTime();
+                var time = getInterval(start, end);
+                setInnerText(daySpan, time.day);
+                setInnerText(hourSpan, time.hour);
+                setInnerText(minuteSpan, time.minute);
+                setInnerText(secondSpan, time.second);
+            }
+        </script>
+    <!-- - - - - - - - - - - end Event Holder - - - - - - - - - - - - -->
+
+    <div class="clear"></div>
+
+    <!-- - - - - - - - - - - - - Navigation - - - - - - - - - - - - - - -->
+
+    <nav id="navigation" class="navigation clearfix">
+
+      <ul class="clearfix">
+        <li class="current-menu-item"><a href="{{ url_for('home') }}">主页</a></li>
+{#        <li><a href="{{ url_for('typography') }}">Features</a>#}
+{#          <ul>#}
+{#            <li><a href="{{ url_for('typography') }}">Typography</a></li>#}
+{#          </ul>#}
+        </li>
+        <li><a href="{{ url_for('staff') }}">成员信息</a></li>
+        <li><a href="{{ url_for('events') }}">事件</a></li>
+        <li><a href="{{ url_for('portfolio') }}">故事</a>
+
+        </li>
+        <li><a href="{{ url_for('gallery') }}">相册</a>
+
+        </li>
+        <li><a href="{{ url_for('blog') }}">动漫资讯</a>
+
+        <li><a href="{{ url_for('contact') }}">联系我们</a></li>
+      </ul>
+
+    </nav><!--/ #navigation-->
+
+    <!-- - - - - - - - - - - - end Navigation - - - - - - - - - - - - - -->
+
+  </div><!--/ .container-->
+
+</header>

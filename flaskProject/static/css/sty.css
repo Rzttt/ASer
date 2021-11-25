@@ -1,0 +1,201 @@
+
+
+
+.audio-player {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	line-height: 20px;
+	vertical-align: middle;
+	color: #fff;
+	width: 400px;
+	height: 150px;
+	position: relative;
+	z-index: 100;
+	left: 50%;
+	-webkit-transform: translate3d(-50%,0,0);
+	        transform: translate3d(-50%,0,0);
+	background-color: #333;
+	border-radius: 5px;
+}
+
+.audio-player .artist, .audio-player .title {
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+}
+
+.audio-player .artist {
+	font-size: 16px;
+	margin-top: 10px;
+	font-weight: bold;
+}
+
+.audio-player .progress-bar{
+	width: 90%;
+	margin:  10px 5% 5px;
+	padding: 0;
+	height: 10px;
+	border-radius: 3px;
+	background-color: #222;
+	cursor: pointer;
+}
+
+.audio-player .progress{
+	display: block;
+	height: 100%;
+	width: 0;
+	background-color: #a7c7dc;
+	border-radius: 3px;
+}
+
+.audio-player .current-duration, .audio-player .duration {
+	display: inline-block;
+	float: left;
+	width: 40%;
+	margin:  0 5% 5px;
+}
+
+.audio-player .duration {
+	text-align: right;
+}
+
+.audio-player input.volume {
+	width: 20%;
+	margin: 20px 5%;
+	-webkit-appearance: none !important;
+	background: #222;
+	height: 4px;
+	float: left;
+	cursor: pointer;
+}
+
+.audio-player input.volume::-webkit-slider-thumb {
+	-webkit-appearance: none !important;
+	height: 12px;
+	width: 12px;
+	background-color: #a7c7dc;
+	border-radius: 3px;
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,.5);
+	        box-shadow: 0 0 10px rgba(0,0,0,.5);
+}
+
+.audio-player .prev, .audio-player .play, .audio-player .pause, .audio-player .next {
+	position: absolute;
+	z-index: 101;
+	-webkit-transform: translate3d(-50%,0,0);
+	        transform: translate3d(-50%,0,0);
+	background-color: transparent;
+	top: 95px;
+	width: 40px;
+	height: 40px;
+	border-radius: 100%;
+	cursor: pointer;
+}
+
+.audio-player .prev:hover, .audio-player .play:hover, .audio-player .pause:hover, .audio-player .next:hover {
+	-webkit-box-shadow: 0 0 10px rgba(250,250,250,.5);
+	        box-shadow: 0 0 10px rgba(250,250,250,.5);
+}
+
+.audio-player .prev:active, .audio-player .play:active, .audio-player .pause:active, .audio-player .next:active {
+	-webkit-box-shadow: 0 0 10px rgba(250,250,250,.3);
+	        box-shadow: 0 0 10px rgba(250,250,250,.3);
+}
+
+.audio-player .prev {
+	background-image: url(../img/btn.png);
+	background-size: auto 40px;
+	background-position: 40px 0;
+	left: 40%;
+}
+
+.audio-player .play {
+	width: 50px;
+	height: 50px;
+	background-image: url(../img/btn.png);
+	background-size: auto 50px;
+	background-position: 155px 0;
+	top: 90px;
+	left: 50%;
+}
+
+.audio-player .pause {
+	display: none;
+	width: 50px;
+	height: 50px;
+	background-image: url(../img/btn.png);
+	background-size: auto 50px;
+	background-position: 261px 0;
+	top: 90px;
+	left: 50%;
+}
+
+.audio-player .next {
+	background-image: url(../img/btn.png);
+	background-size: auto 40px;
+	background-position: 82px 0;
+	left: 60%;
+}
+
+.audio-player .list-btn {
+	width: 30px;
+	height: 30px;
+	margin: 5px 5%;
+	border-radius: 3px;
+	background-image: url(../img/menu-btn.png);
+	background-size: cover;
+	float: right;
+	cursor: pointer;
+}
+
+.audio-player .list-btn:hover {
+	-webkit-box-shadow: 0 0 10px rgba(250,250,250,.5);
+	        box-shadow: 0 0 10px rgba(250,250,250,.5);
+}
+
+.audio-player .list-btn:active {
+	-webkit-box-shadow: 0 0 10px rgba(250,250,250,.3);
+	        box-shadow: 0 0 10px rgba(250,250,250,.3);
+}
+
+.audio-player ul.playlist {
+	display: inline-block;
+	list-style: none;
+	position: absolute;
+	z-index: 100;
+	top: 105%;
+	left: 0;
+	width: 100%;
+	min-height: 90px;
+	max-height: 210px;
+	overflow-y: auto;
+	background-color: #333;
+	border-radius: 5px;
+	-webkit-box-shadow: 0 5px 10px rgba(0,0,0,.5);
+	        box-shadow: 0 5px 10px rgba(0,0,0,.5);
+}
+
+ul.playlist::-webkit-scrollbar{width: 12px;}
+ul.playlist::-webkit-scrollbar-track{background: rgba(0, 0, 0, 0.1);border-radius: 5px;}
+ul.playlist::-webkit-scrollbar-thumb {background: rgba(0, 0, 0, 0.5);border-radius: 5px;}
+
+.audio-player ul.playlist li {
+	display: inline-block;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	float: left;
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	padding: 0 5%;
+	cursor: pointer;
+}
+
+.audio-player ul.playlist li:hover {
+	background-color: rgba(255,255,255,.1);
+}
+
+.audio-player ul.playlist li.active, .audio-player ul.playlist li:active {
+	background-color: rgba(255,255,255,.15);
+	cursor: default;
+}
