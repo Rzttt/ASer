@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.23, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.26, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: aser
 -- ------------------------------------------------------
--- Server version	8.0.23
+-- Server version	8.0.26
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18,9 +18,6 @@
 --
 -- Table structure for table `activity`
 --
-
-create DATABASE ASer;
-use ASer;
 
 DROP TABLE IF EXISTS `activity`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -38,8 +35,35 @@ CREATE TABLE `activity` (
 
 LOCK TABLES `activity` WRITE;
 /*!40000 ALTER TABLE `activity` DISABLE KEYS */;
-INSERT INTO `activity` VALUES ('2021-11-20 18:00:00','2021ASer冬日祭');
+INSERT INTO `activity` VALUES ('2021-11-20 18:00:00','2021ASer冬日祭'),('2022-05-23 21:01:37','ASer春日祭');
 /*!40000 ALTER TABLE `activity` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `admin`
+--
+
+DROP TABLE IF EXISTS `admin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `admin` (
+  `name` varchar(20) NOT NULL,
+  `password` varchar(128) NOT NULL,
+  `Authority` int NOT NULL DEFAULT '3',
+  `id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `admin_id_uindex` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `admin`
+--
+
+LOCK TABLES `admin` WRITE;
+/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
+INSERT INTO `admin` VALUES ('RT','pbkdf2:sha256:260000$MCJrNGSvKFZlBtTK$17ba8da28d66effdd1a855132e0b4e6337ac49a426a58d4e5dd9ab2ccee83346',0,1);
+/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -89,7 +113,7 @@ CREATE TABLE `comment` (
   `index_` int NOT NULL AUTO_INCREMENT,
   `type` int DEFAULT NULL,
   PRIMARY KEY (`index_`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +122,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-INSERT INTO `comment` VALUES ('2','280844012@qq.com',1,'..','../static/images/avatar/1.png',1,1),('RT','280844012@qq.com',1,'这是ASer动漫社','../static/images/avatar/2.png',2,1),('RTzld','ayjadxlz@mails.jlnu.edu.cn',1,'wu','../static/images/avatar/16.png',3,1),('RTzld','ayjadxlz@mails.jlnu.edu.cn',1,'wu','../static/images/avatar/16.png',4,1),('h598','1741346659@qq.com',1,'22255','../static/images/avatar/11.png',5,1),('h598','1741346659@qq.com',1,'22255','../static/images/avatar/11.png',6,1),('RTzld','280844012@qq.con',2,'22211','../static/images/avatar/8.png',7,1),('RTzld','280844012@qq.con',2,'22211','../static/images/avatar/8.png',8,1),('RTzld','2300746003@qq.com',1,'qqqq','../static/images/avatar/19.png',9,1),('RTzld','2300746003@qq.com',1,'qqqq','../static/images/avatar/19.png',10,1),('王昊','2300746003@qq.com',1,'111222','../static/images/avatar/19.png',11,1),('王昊','280844012@qq.com',1,'553348uij','../static/images/avatar/1.png',12,1),('王昊','2300746003@qq.com',1,'667822','../static/images/avatar/19.png',13,1),('gxr','2659307910@qq.com',1,'我是憨憨！！！','../static/images/avatar/1.png',14,1),('王昊','280844012@qq.com',1,'2assdaasdasdx','../static/images/avatar/1.png',15,1),('1222','2166093656@qq.com',1,'11122w1','../static/images/avatar/14.png',16,1),('RTzld','2300746003@qq.com',3,'121221','../static/images/avatar/19.png',17,1),('RTzld','1741346659@qq.com',1,'6666666','../static/images/avatar/14.png',18,2);
+INSERT INTO `comment` VALUES ('2','280844012@qq.com',1,'..','../static/images/avatar/1.png',1,1),('RT','280844012@qq.com',1,'这是ASer动漫社','../static/images/avatar/2.png',2,1),('RTzld','ayjadxlz@mails.jlnu.edu.cn',1,'wu','../static/images/avatar/16.png',3,1),('RTzld','ayjadxlz@mails.jlnu.edu.cn',1,'wu','../static/images/avatar/16.png',4,1),('h598','1741346659@qq.com',1,'22255','../static/images/avatar/11.png',5,1),('h598','1741346659@qq.com',1,'22255','../static/images/avatar/11.png',6,1),('RTzld','280844012@qq.con',2,'22211','../static/images/avatar/8.png',7,1),('RTzld','280844012@qq.con',2,'22211','../static/images/avatar/8.png',8,1),('RTzld','2300746003@qq.com',1,'qqqq','../static/images/avatar/19.png',9,1),('RTzld','2300746003@qq.com',1,'qqqq','../static/images/avatar/19.png',10,1),('王昊','2300746003@qq.com',1,'111222','../static/images/avatar/19.png',11,1),('王昊','280844012@qq.com',1,'553348uij','../static/images/avatar/1.png',12,1),('王昊','2300746003@qq.com',1,'667822','../static/images/avatar/19.png',13,1),('gxr','2659307910@qq.com',1,'我是憨憨！！！','../static/images/avatar/1.png',14,1),('王昊','280844012@qq.com',1,'2assdaasdasdx','../static/images/avatar/1.png',15,1),('1222','2166093656@qq.com',1,'11122w1','../static/images/avatar/14.png',16,1),('RTzld','2300746003@qq.com',3,'121221','../static/images/avatar/19.png',17,1),('RTzld','1741346659@qq.com',1,'6666666','../static/images/avatar/14.png',18,2),('RT','280844012@qq.com',1,'暂无','../static/images/avatar/1.png',19,1),('yy','2602125@qq.com',2,'wu','../static/images/avatar/2.png',20,2),('王昊','280844012@qq.com',3,'52125','../static/images/avatar/1.png',21,1);
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,7 +143,7 @@ CREATE TABLE `events` (
   `id` int NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`name`),
   UNIQUE KEY `events_id_uindex` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,7 +152,7 @@ CREATE TABLE `events` (
 
 LOCK TABLES `events` WRITE;
 /*!40000 ALTER TABLE `events` DISABLE KEYS */;
-INSERT INTO `events` VALUES ('2021冬日祭','7501','无','2021-11-20','18:00:00','../static/images/none.png',3),('2021冬日祭排练','11307','无','2021-11-06','13:00:00','../static/images/none.png',1),('wu','11307','wu','2021-11-07','12:00:00','../static/images/none.png',2);
+INSERT INTO `events` VALUES ('2021冬日祭','7501','无','2021-11-20','18:00:00','../static/images/none.png',3),('2021冬日祭排练','11307','无','2021-11-06','13:00:00','../static/images/none.png',1),('wu','11307','wu','2021-11-07','12:00:00','../static/images/none.png',2),('春日','7501','暂无','2022-06-02','12:04:00','../static/images/event/5.jpg',4);
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -154,7 +178,7 @@ CREATE TABLE `minister` (
 
 LOCK TABLES `minister` WRITE;
 /*!40000 ALTER TABLE `minister` DISABLE KEYS */;
-INSERT INTO `minister` VALUES ('日天','../static/images/temp/staff-img-1.jpg','后期','淞淞的老父亲，淞淞已经欠了好几次女装了，日天一直想知道他该怎么解决问题',5),('淞淞','../static/images/temp/staff-img-2.jpg','社长','犯下了傲慢之罪，不能完成我们大家的心愿',1),('小西','../static/images/none.png','宅舞','淞淞的一生之敌',2);
+INSERT INTO `minister` VALUES ('日天','../static/images/temp/staff-img-1.jpg','后期','淞淞的老父亲，淞淞已经欠了好几次女装了，日天一直想知道他该怎么解决问题',5),('淞淞','../static/images/temp/staff-img-2.jpg','社长','犯下了傲慢之罪，不能完成我们大家的心愿',1),('小西','../static/images/none.png','宅舞','淞淞的一生之敌',2),('情陌','../static/images/member/6.jpg','后勤','wu1',4),('方方','../static/images/member/saturation.png','后勤','暂无',4);
 /*!40000 ALTER TABLE `minister` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -198,7 +222,7 @@ CREATE TABLE `suggestion` (
   `email` varchar(30) NOT NULL,
   `message` varchar(600) DEFAULT NULL,
   PRIMARY KEY (`index`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -207,7 +231,7 @@ CREATE TABLE `suggestion` (
 
 LOCK TABLES `suggestion` WRITE;
 /*!40000 ALTER TABLE `suggestion` DISABLE KEYS */;
-INSERT INTO `suggestion` VALUES (12,'RTzld','2300746003@qq.com','111s'),(13,'王昊','2300746003@qq.com','2255'),(14,'12138','3618386561@qq.com','2222'),(15,'王昊','280844012@qq.com','111saAW`11');
+INSERT INTO `suggestion` VALUES (12,'RTzld','2300746003@qq.com','111s'),(13,'王昊','2300746003@qq.com','2255'),(14,'12138','3618386561@qq.com','2222'),(15,'王昊','280844012@qq.com','111saAW`11'),(16,'帅气的崔杰','michaelchui007@gmail.com','崔杰好帅哦！！！'),(17,'帅气的崔杰','michaelchui007@gmail.com','崔杰好帅哦！！！'),(18,'RTzld','280844012@qq.com','52112'),(19,'王昊','280844012@qq.com','asdsdds'),(20,'王昊','280844012@qq.com','1122121'),(21,'王昊','280844012@qq.com','550255');
 /*!40000 ALTER TABLE `suggestion` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -220,4 +244,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-13 22:21:35
+-- Dump completed on 2021-11-25  8:45:48
